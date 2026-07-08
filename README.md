@@ -1,4 +1,4 @@
-# SImples Gateway Pagamentos
+# Simples Gateway Pagamentos
 
 API REST completa para gestão de clientes, contas, transferências e pagamentos (Pix, Boleto, Cartão de Crédito).
 
