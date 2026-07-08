@@ -38,8 +38,3 @@ A aplicação iniciará em `http://localhost:8080`. O console H2 está disponív
 
 Uma collection Postman pronta para testes está disponível no arquivo `postman_collection.json`.
 
-
-- `"Valor invalido"` → 400
-- `"Cliente ja cadastrado com este CPF/CNPJ"` → 400
-- `"Chave Pix obrigatoria"` → 400
-- `"Limite do cartao insuficiente"` → 400
