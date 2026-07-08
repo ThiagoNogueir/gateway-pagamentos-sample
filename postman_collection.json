@@ -1,0 +1,327 @@
+{
+  "info": {
+    "name": "Gateway Pagamentos",
+    "description": "API completa para gestão de clientes, contas, transferências e pagamentos (Pix, Boleto, Cartão de Crédito).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Clientes",
+      "item": [
+        {
+          "name": "Criar cliente",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"João Silva\",\n  \"cpfCnpj\": \"12345678901\",\n  \"email\": \"joao@email.com\",\n  \"telefone\": \"11999999999\",\n  \"tipo\": \"PF\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/clientes",
+              "host": ["{{base_url}}"],
+              "path": ["clientes"]
+            }
+          }
+        },
+        {
+          "name": "Listar clientes",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/clientes",
+              "host": ["{{base_url}}"],
+              "path": ["clientes"]
+            }
+          }
+        },
+        {
+          "name": "Buscar cliente por ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/clientes/1",
+              "host": ["{{base_url}}"],
+              "path": ["clientes", "1"]
+            }
+          }
+        },
+        {
+          "name": "Atualizar cliente",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"João Silva Atualizado\",\n  \"cpfCnpj\": \"12345678901\",\n  \"email\": \"joao.novo@email.com\",\n  \"telefone\": \"11988888888\",\n  \"tipo\": \"PF\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/clientes/1",
+              "host": ["{{base_url}}"],
+              "path": ["clientes", "1"]
+            }
+          }
+        },
+        {
+          "name": "Excluir cliente",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{base_url}}/clientes/1",
+              "host": ["{{base_url}}"],
+              "path": ["clientes", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Contas",
+      "item": [
+        {
+          "name": "Criar conta",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"numero\": \"12345-6\",\n  \"titular\": \"João Silva\",\n  \"banco\": \"Banco do Brasil\",\n  \"agencia\": \"0001\",\n  \"tipo\": \"CORRENTE\",\n  \"saldo\": 1000.00,\n  \"status\": \"ATIVA\",\n  \"clienteId\": 1\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/contas",
+              "host": ["{{base_url}}"],
+              "path": ["contas"]
+            }
+          }
+        },
+        {
+          "name": "Listar contas",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/contas",
+              "host": ["{{base_url}}"],
+              "path": ["contas"]
+            }
+          }
+        },
+        {
+          "name": "Buscar conta por ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/contas/1",
+              "host": ["{{base_url}}"],
+              "path": ["contas", "1"]
+            }
+          }
+        },
+        {
+          "name": "Buscar contas por cliente",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/contas/cliente/1",
+              "host": ["{{base_url}}"],
+              "path": ["contas", "cliente", "1"]
+            }
+          }
+        },
+        {
+          "name": "Atualizar conta",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"numero\": \"12345-6\",\n  \"titular\": \"João Silva\",\n  \"banco\": \"Banco do Brasil\",\n  \"agencia\": \"0001\",\n  \"tipo\": \"CORRENTE\",\n  \"saldo\": 2000.00,\n  \"status\": \"ATIVA\",\n  \"clienteId\": 1\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/contas/1",
+              "host": ["{{base_url}}"],
+              "path": ["contas", "1"]
+            }
+          }
+        },
+        {
+          "name": "Excluir conta",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{base_url}}/contas/1",
+              "host": ["{{base_url}}"],
+              "path": ["contas", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Transferências",
+      "item": [
+        {
+          "name": "Realizar transferência",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"contaOrigem\": \"12345-6\",\n  \"contaDestino\": \"67890-1\",\n  \"valor\": 250.00\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/transferencias",
+              "host": ["{{base_url}}"],
+              "path": ["transferencias"]
+            }
+          }
+        },
+        {
+          "name": "Consultar saldo",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/transferencias/saldo/12345-6",
+              "host": ["{{base_url}}"],
+              "path": ["transferencias", "saldo", "12345-6"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Pagamentos",
+      "item": [
+        {
+          "name": "Pagamento via Pix",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"contaOrigemId\": 1,\n  \"contaDestinoId\": 2,\n  \"valor\": 150.00,\n  \"metodo\": \"PIX\",\n  \"descricao\": \"Pagamento via Pix\",\n  \"chavePix\": \"joao@email.com\",\n  \"tipoChavePix\": \"EMAIL\",\n  \"codigoBarrasBoleto\": null,\n  \"dataVencimentoBoleto\": null,\n  \"cartaoCreditoId\": null,\n  \"parcelas\": null\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/pagamentos",
+              "host": ["{{base_url}}"],
+              "path": ["pagamentos"]
+            }
+          }
+        },
+        {
+          "name": "Pagamento via Boleto",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"contaOrigemId\": 1,\n  \"contaDestinoId\": 2,\n  \"valor\": 500.00,\n  \"metodo\": \"BOLETO\",\n  \"descricao\": \"Pagamento de boleto\",\n  \"chavePix\": null,\n  \"tipoChavePix\": null,\n  \"codigoBarrasBoleto\": \"34191750090000123456789012345678901234567890\",\n  \"dataVencimentoBoleto\": \"2026-08-07\",\n  \"cartaoCreditoId\": null,\n  \"parcelas\": null\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/pagamentos",
+              "host": ["{{base_url}}"],
+              "path": ["pagamentos"]
+            }
+          }
+        },
+        {
+          "name": "Pagamento via Cartão de Crédito",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"contaOrigemId\": 1,\n  \"contaDestinoId\": 2,\n  \"valor\": 300.00,\n  \"metodo\": \"CARTAO\",\n  \"descricao\": \"Compra no cartao\",\n  \"chavePix\": null,\n  \"tipoChavePix\": null,\n  \"codigoBarrasBoleto\": null,\n  \"dataVencimentoBoleto\": null,\n  \"cartaoCreditoId\": 1,\n  \"parcelas\": 3\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/pagamentos",
+              "host": ["{{base_url}}"],
+              "path": ["pagamentos"]
+            }
+          }
+        },
+        {
+          "name": "Listar pagamentos",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/pagamentos",
+              "host": ["{{base_url}}"],
+              "path": ["pagamentos"]
+            }
+          }
+        },
+        {
+          "name": "Buscar pagamento por ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/pagamentos/1",
+              "host": ["{{base_url}}"],
+              "path": ["pagamentos", "1"]
+            }
+          }
+        },
+        {
+          "name": "Buscar pagamentos por conta",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/pagamentos/conta/1",
+              "host": ["{{base_url}}"],
+              "path": ["pagamentos", "conta", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Extrato",
+      "item": [
+        {
+          "name": "Extrato por número da conta",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/extratos/12345-6",
+              "host": ["{{base_url}}"],
+              "path": ["extratos", "12345-6"]
+            }
+          }
+        },
+        {
+          "name": "Extrato completo por ID da conta",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/extratos/conta/1",
+              "host": ["{{base_url}}"],
+              "path": ["extratos", "conta", "1"]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8080"
+    }
+  ]
+}
